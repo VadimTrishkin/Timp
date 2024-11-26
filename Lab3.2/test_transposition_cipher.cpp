@@ -5,13 +5,13 @@
 TEST(TestEncryptBasic) {
     TranspositionCipher cipher(4);
     std::string encrypted = cipher.encrypt("HELLOWORLD");
-    CHECK_EQUAL("LHDLOEORWL", encrypted); // Ожидаемый зашифрованный текст
+    CHECK_EQUAL("HOLEWDLOLR", encrypted); // Ожидаемый зашифрованный текст
 }
 
-// Тест дешифрования текста "LHDLOEORWL" с 4 столбцами
+// Тест дешифрования текста "HOLEWDLOLR" с 4 столбцами
 TEST(TestDecryptBasic) {
     TranspositionCipher cipher(4);
-    std::string decrypted = cipher.decrypt("LHDLOEORWL");
+    std::string decrypted = cipher.decrypt("HOLEWDLOLR");
     CHECK_EQUAL("HELLOWORLD", decrypted); // Ожидаемый расшифрованный текст
 }
 
@@ -48,14 +48,14 @@ TEST(TestInvalidColumns) {
 TEST(TestEncryptMoreColumnsThanText) {
     TranspositionCipher cipher(20);
     std::string encrypted = cipher.encrypt("HELLO");
-    CHECK(encrypted.size() == 20); // Проверка на корректный размер
+    CHECK_EQUAL("HELLO", encrypted);
 }
 
 // Тест на дешифрование с большим количеством столбцов, чем символов
 TEST(TestDecryptMoreColumnsThanText) {
     TranspositionCipher cipher(20);
-    std::string decrypted = cipher.decrypt("H    E    L    L    O");
-    CHECK_EQUAL("HELLO", decrypted); // Ожидаем, что пробелы убраны и текст корректный
+    std::string decrypted = cipher.decrypt("HELLO");
+    CHECK_EQUAL("HELLO", decrypted);
 }
 
 int main() {
