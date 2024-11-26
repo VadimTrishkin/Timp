@@ -19,15 +19,23 @@ std::string TranspositionCipher::encrypt(const std::string& plaintext) {
         }
     }
 
-    int rows = (plaintext.size() + columns_ - 1) / columns_; // Количество строк
-    std::vector<std::string> table(rows, std::string(columns_, ' ')); // Заполняем таблицу пробелами
+    std::string sanitizedText;
+    // Удаляем пробелы из входного текста
+    for (char c : plaintext) {
+        if (!isspace(c)) {
+            sanitizedText += c;
+        }
+    }
+
+    int rows = (sanitizedText.size() + columns_ - 1) / columns_; // Количество строк
+    std::vector<std::string> table(rows, std::string(columns_, '\0')); // Используем '\0' для пустых ячеек
     int index = 0;
 
     // Заполнение таблицы
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < columns_; ++j) {
-            if (index < plaintext.size()) {
-                table[i][j] = plaintext[index++];
+            if (index < sanitizedText.size()) {
+                table[i][j] = sanitizedText[index++];
             }
         }
     }
@@ -36,7 +44,9 @@ std::string TranspositionCipher::encrypt(const std::string& plaintext) {
     std::string ciphertext;
     for (int j = 0; j < columns_; ++j) {
         for (int i = 0; i < rows; ++i) {
-            ciphertext += table[i][j];
+            if (table[i][j] != '\0') { // Игнорируем пустые ячейки
+                ciphertext += table[i][j];
+            }
         }
     }
 
@@ -51,19 +61,24 @@ std::string TranspositionCipher::decrypt(const std::string& ciphertext) {
 
     // Проверка на невалидные символы
     for (char c : ciphertext) {
-        if (!isalnum(c) && !isspace(c)) {
+        if (!isalnum(c)) {
             throw std::invalid_argument("Input text contains invalid characters");
         }
     }
 
     int rows = (ciphertext.size() + columns_ - 1) / columns_; // Количество строк
-    std::vector<std::string> table(rows, std::string(columns_, ' ')); // Создаем пустую таблицу
+    int extraCells = (rows * columns_) - ciphertext.size(); // Лишние ячейки
+    std::vector<std::string> table(rows, std::string(columns_, '\0'));
 
     int index = 0;
 
     // Заполнение таблицы столбцами
     for (int j = 0; j < columns_; ++j) {
         for (int i = 0; i < rows; ++i) {
+            // Пропускаем лишние ячейки в последней строке
+            if (i == rows - 1 && j >= columns_ - extraCells) {
+                continue;
+            }
             if (index < ciphertext.size()) {
                 table[i][j] = ciphertext[index++];
             }
@@ -74,10 +89,11 @@ std::string TranspositionCipher::decrypt(const std::string& ciphertext) {
     std::string plaintext;
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < columns_; ++j) {
-            plaintext += table[i][j];
+            if (table[i][j] != '\0') { // Игнорируем пустые ячейки
+                plaintext += table[i][j];
+            }
         }
     }
 
     return plaintext;
 }
-
