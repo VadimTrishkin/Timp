@@ -38,8 +38,8 @@ int main() {
         std::locale loc("ru_RU.UTF-8");
         std::locale::global(loc);
 
-        std::wstring key, text; ///< Переменные для хранения ключа и текста
-        int op; ///< Выбранная операция: 0 - выход, 1 - шифрование, 2 - дешифрование
+        std::wstring key, text; 
+        int op; 
 
         std::wcout << L"Введите ключ: ";
         std::wcin >> key;

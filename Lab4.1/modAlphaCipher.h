@@ -22,9 +22,9 @@
  */
 class modAlphaCipher {
 private:
-    std::wstring numAlpha = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"; ///< Алфавит, используемый для шифра.
-    std::map<wchar_t, int> alphaNum; ///< Сопоставление символов с их числовыми позициями в алфавите.
-    std::vector<int> key; ///< Числовое представление ключа шифрования.
+    std::wstring numAlpha = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"; 
+    std::map<wchar_t, int> alphaNum; 
+    std::vector<int> key;
 
     /**
      * @brief Преобразует строку в числовой вектор на основе алфавита.

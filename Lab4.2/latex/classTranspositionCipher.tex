@@ -1,4 +1,4 @@
-\hypertarget{classTranspositionCipher}{}\doxysection{Transposition\+Cipher Class Reference}
+\hypertarget{classTranspositionCipher}{}\doxysection{Класс Transposition\+Cipher}
 \label{classTranspositionCipher}\index{TranspositionCipher@{TranspositionCipher}}
 
 
@@ -9,7 +9,7 @@
 
 {\ttfamily \#include $<$transposition\+\_\+cipher.\+h$>$}
 
-\doxysubsection*{Public Member Functions}
+\doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classTranspositionCipher_a8b505f4ff388e18a3126bbbffd59d5f7}{Transposition\+Cipher}} (int columns)
@@ -20,10 +20,10 @@ std\+::string \mbox{\hyperlink{classTranspositionCipher_a9296190e222437375958865
 \begin{DoxyCompactList}\small\item\em Дешифрует зашифрованный текст методом перестановок. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
+\doxysubsection{Подробное описание}
 Класс, реализующий шифрование и дешифрование текста методом перестановок. 
 
-\doxysubsection{Constructor \& Destructor Documentation}
+\doxysubsection{Конструктор(ы)}
 \mbox{\Hypertarget{classTranspositionCipher_a8b505f4ff388e18a3126bbbffd59d5f7}\label{classTranspositionCipher_a8b505f4ff388e18a3126bbbffd59d5f7}} 
 \index{TranspositionCipher@{TranspositionCipher}!TranspositionCipher@{TranspositionCipher}}
 \index{TranspositionCipher@{TranspositionCipher}!TranspositionCipher@{TranspositionCipher}}
@@ -35,18 +35,18 @@ std\+::string \mbox{\hyperlink{classTranspositionCipher_a9296190e222437375958865
 Конструктор для инициализации шифра с заданным количеством столбцов. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em columns} & Количество столбцов в таблице перестановок. \\
 \hline
 \end{DoxyParams}
 
-\begin{DoxyExceptions}{Exceptions}
+\begin{DoxyExceptions}{Исключения}
 {\em std\+::invalid\+\_\+argument} & Если количество столбцов не является положительным числом. \\
 \hline
 \end{DoxyExceptions}
 
 
-\doxysubsection{Member Function Documentation}
+\doxysubsection{Методы}
 \mbox{\Hypertarget{classTranspositionCipher_a9296190e222437375958865eb65ff049}\label{classTranspositionCipher_a9296190e222437375958865eb65ff049}} 
 \index{TranspositionCipher@{TranspositionCipher}!decrypt@{decrypt}}
 \index{decrypt@{decrypt}!TranspositionCipher@{TranspositionCipher}}
@@ -58,15 +58,15 @@ std\+::string \mbox{\hyperlink{classTranspositionCipher_a9296190e222437375958865
 Дешифрует зашифрованный текст методом перестановок. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em ciphertext} & Входной зашифрованный текст. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 Расшифрованный текст. 
 \end{DoxyReturn}
 
-\begin{DoxyExceptions}{Exceptions}
+\begin{DoxyExceptions}{Исключения}
 {\em std\+::invalid\+\_\+argument} & Если входной текст пуст или содержит недопустимые символы. \\
 \hline
 \end{DoxyExceptions}
@@ -81,21 +81,21 @@ std\+::string \mbox{\hyperlink{classTranspositionCipher_a9296190e222437375958865
 Шифрует входной текст методом перестановок. 
 
 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{Аргументы}
 {\em plaintext} & Входной текст для шифрования. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
+\begin{DoxyReturn}{Возвращает}
 Зашифрованный текст. 
 \end{DoxyReturn}
 
-\begin{DoxyExceptions}{Exceptions}
+\begin{DoxyExceptions}{Исключения}
 {\em std\+::invalid\+\_\+argument} & Если входной текст пуст или содержит недопустимые символы. \\
 \hline
 \end{DoxyExceptions}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{transposition__cipher_8h}{transposition\+\_\+cipher.\+h}}\item 
 \mbox{\hyperlink{transposition__cipher_8cpp}{transposition\+\_\+cipher.\+cpp}}\end{DoxyCompactItemize}
